@@ -1,7 +1,0 @@
-matplotlib
-pytorch_lightning
-tensorboard
-torch
-torchvision
-torchaudio
-trimesh
