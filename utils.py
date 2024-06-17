@@ -7,8 +7,8 @@ from termcolor import colored
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 # Project Folder (ROOT Project Location) NEED TO CHANGE "/home/fra" with correct path of the folder
-FOLDER = os.path.abspath(os.path.join(os.path.dirname('/home/davide/ROS/altimani_ws/3Dpc - v2')))
-FOLDER_MODEL = os.path.abspath(os.path.join(os.path.dirname('/home/davide/ROS/altimani_ws/3Dpc - v2/model/model.pth')))
+FOLDER = os.path.abspath(os.path.join(os.path.dirname('/home/davide/ROS/altimani_ws/3Dpc - v3')))
+FOLDER_MODEL = os.path.abspath(os.path.join(os.path.dirname('/home/davide/ROS/altimani_ws/3Dpc - v3/model/model.pth')))
 
 # PATH of the 3D pointcloud dataset saved ad "namefil.off" -> matrix[ num_points x 3 ] 
 #root path :
@@ -30,7 +30,8 @@ FOLDER_MODEL = os.path.abspath(os.path.join(os.path.dirname('/home/davide/ROS/al
 #                   chair[...],
 #                   ...}"
 #
-PATH = "/home/davide/ROS/altimani_ws/3Dpc - v2/ModelNet10"
+# PATH = "/home/davide/ROS/altimani_ws/3Dpc - v3/ModelNet10"
+PATH = "/home/davide/ROS/altimani_ws/3Dpc - v3/ModelNet40"
 
 def save_model(path:str, file_name:str, model:LightningModule):
 

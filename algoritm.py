@@ -10,10 +10,11 @@ from network import NeuralClassifier, num_points, num_classes
 from utils import FOLDER, FOLDER_MODEL, PATH, DEVICE
 import pickle
 
+
 class MyAlgo:
 
   """ 3D Training Class """
-  def __init__(self, batch_size, optimizer = 'Adam', learning_rate =0.0005, loss_function = 'cross_entropy'):
+  def __init__(self, batch_size, optimizer = 'Adam', learning_rate =0.0001, loss_function = 'cross_entropy'):
     # Get Database and Model Path
     self.model_path = os.path.join(FOLDER_MODEL, 'model')
     # Prepare Dataloaders
@@ -30,6 +31,7 @@ class MyAlgo:
         # Load processed data
         processed_data = load_processed_data(processed_data_path)
         train_sequences, train_labels, test_sequences, test_labels = processed_data
+
     else:
         # Process data
         train_datacare = self.parse_dataset(num_points, mode='train')
@@ -41,6 +43,8 @@ class MyAlgo:
         # Save processed data
         processed_data = (train_sequences, train_labels, test_sequences, test_labels)
         save_processed_data(processed_data, processed_data_path)
+    
+    print('\nSEQUEnzadebug: ',train_sequences[1],train_labels[1],test_sequences[1],test_labels[1])
 
     train_dataset = MyDataset(train_sequences, train_labels)
     test_dataset = MyDataset(test_sequences, test_labels)
@@ -57,7 +61,7 @@ class MyAlgo:
     
     return self.train_dataloader, self.test_dataloader
   
-  def createModel(self, dataset_shape: Tuple[torch.Size, torch.Size], optimizer='Adam', lr=0.0005, loss_function='cross_entropy'):
+  def createModel(self, dataset_shape: Tuple[torch.Size, torch.Size], optimizer='SGD', lr=0.001, loss_function='cross_entropy'):
     # Get Input and Output Sizes from Dataset Shapes
     input_size, output_size = torch.Size(list(dataset_shape[0])[1:]), torch.Size(list(dataset_shape[1])[1:])
   
@@ -81,7 +85,7 @@ class MyAlgo:
     # Parse the dataset by loading point clouds and labels
     # from the specified directories for training or testing
         
-    print('\nthe PATH IS: ',os.listdir(PATH))
+    # print('\nthe PATH IS: ',os.listdir(PATH))
     folders = [dir for dir in sorted(os.listdir(PATH)) if os.path.isdir(os.path.join(PATH, dir))]
   
     class_map = {}
