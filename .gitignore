@@ -160,3 +160,11 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# ModelNet40 - Large Files
+ModelNet40/airplane/train/airplane_0050.off
+ModelNet40/airplane/train/airplane_0061.off
+ModelNet40/airplane/train/airplane_0130.off
+ModelNet40/airplane/train/airplane_0598.off
+ModelNet40/curtain/train/curtain_0130.off
+ModelNet40/plant/train/plant_0014.off
